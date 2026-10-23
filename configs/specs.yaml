@@ -1,0 +1,31 @@
+# Locked before any day-2 job. Do not edit after the sweep starts.
+# Regions divide the 50 nm grid. Thresholds stay in protocol.yaml.
+# b00 / s00 are the nominal devices used by phase A.
+
+waveguide_bend:
+  - {id: b00, region_nm: [1600, 1600], wavelength_offset_nm: 0, nominal: true}
+  - {id: b01, region_nm: [1600, 1600], wavelength_offset_nm: -10, nominal: false}
+  - {id: b02, region_nm: [1600, 1600], wavelength_offset_nm: 10, nominal: false}
+  - {id: b03, region_nm: [1400, 1400], wavelength_offset_nm: 0, nominal: false}
+  - {id: b04, region_nm: [1400, 1400], wavelength_offset_nm: -10, nominal: false}
+  - {id: b05, region_nm: [1400, 1400], wavelength_offset_nm: 10, nominal: false}
+  - {id: b06, region_nm: [1800, 1800], wavelength_offset_nm: 0, nominal: false}
+  - {id: b07, region_nm: [1800, 1800], wavelength_offset_nm: -10, nominal: false}
+  - {id: b08, region_nm: [1800, 1800], wavelength_offset_nm: 10, nominal: false}
+  - {id: b09, region_nm: [2000, 2000], wavelength_offset_nm: 0, nominal: false}
+  - {id: b10, region_nm: [2000, 2000], wavelength_offset_nm: -10, nominal: false}
+  - {id: b11, region_nm: [2000, 2000], wavelength_offset_nm: 10, nominal: false}
+
+beam_splitter:
+  - {id: s00, region_nm: [3200, 2000], wavelength_offset_nm: 0, nominal: true}
+  - {id: s01, region_nm: [3200, 2000], wavelength_offset_nm: -10, nominal: false}
+  - {id: s02, region_nm: [3200, 2000], wavelength_offset_nm: 10, nominal: false}
+  - {id: s03, region_nm: [2800, 1800], wavelength_offset_nm: 0, nominal: false}
+  - {id: s04, region_nm: [2800, 1800], wavelength_offset_nm: -10, nominal: false}
+  - {id: s05, region_nm: [2800, 1800], wavelength_offset_nm: 10, nominal: false}
+  - {id: s06, region_nm: [3600, 2000], wavelength_offset_nm: 0, nominal: false}
+  - {id: s07, region_nm: [3600, 2000], wavelength_offset_nm: -10, nominal: false}
+  - {id: s08, region_nm: [3600, 2000], wavelength_offset_nm: 10, nominal: false}
+  - {id: s09, region_nm: [3200, 2400], wavelength_offset_nm: 0, nominal: false}
+  - {id: s10, region_nm: [3200, 2400], wavelength_offset_nm: -10, nominal: false}
+  - {id: s11, region_nm: [3200, 2400], wavelength_offset_nm: 10, nominal: false}

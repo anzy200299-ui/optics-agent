@@ -1,0 +1,23 @@
+# Routing task. Separate from the day-2 table. Written before that sweep.
+# Two 8-parameter families, one budget. The class is which keep-out is present.
+# clean: a wall across the outer lane, the arc is open.
+# blocked: a sector over the quarter-circle, the outer lane is open.
+# Oracle spends the whole budget on the matching family.
+# The mask rule does the same choice from the geometry, with no solve.
+# Probe spends one low-fidelity generation on each family, then the rest on the better proxy.
+
+budget: 80
+sizes_nm: [1600, 1800, 2000]
+seeds: [0, 1, 2]
+wavelength_offset_nm: 0.0
+classes: [clean, blocked]
+methods: [always_arc, always_detour, probe_commit]
+right_family:
+  clean: arc
+  blocked: detour
+
+wall_top_band_wg: 2.0
+wall_x_frac: [0.2, 0.8]
+sector_r_frac: [0.18, 0.72]
+sector_deg: [15.0, 75.0]
+sector_frame_wg: 2.0

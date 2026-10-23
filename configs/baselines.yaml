@@ -1,0 +1,52 @@
+# Locked before any day-2 job. Do not edit after the sweep starts.
+# Parametric formulas live in src/optics_bench/parametric.py.
+# p = 0.5 is the nominal geometry. CMA-ES starts there.
+
+restart_k: 2
+# child_seed = job_seed + child_index. Child 0 matches that job's fixed-adjoint init.
+init_std: 0.1
+stagnation_steps: 3
+stagnation_eps: 0.001
+filter_radius_max_px: 4
+heuristic_iterations: [5, 1]
+
+# Fixed adjoint, and each restart child on its own sub-budget:
+#   low while spent < sub-budget/2, then high
+#   one Adam step when its full forward+adjoint cost fits
+#   then one high-fidelity judge if that forward cost fits in what remains
+#   filter radius stays at the protocol value; no rollback
+# Restart uses k equal sub-budgets. Stop at the first hard success.
+# A child's unspent remainder is not given to the next child.
+#
+# Heuristic, adjoint + density_grid only, never CMA-ES:
+#   fidelity is chosen when the action is chosen
+#   prefer 5 iterations, else 1; a 5-step action does not switch fidelity midway
+#   stagnation is counted on every evaluated design (eps above)
+#   rollback draws a new latent, resets Adam and the stall counter, does not refund C
+#   the rolled-back evaluation does not pay the adjoint
+#   a linewidth failure increases the filter radius by 1, up to the cap
+#   the stall counter resets when fidelity changes
+#   hard success stops without paying the unused adjoint
+#
+# CMA-ES, parametric_lowdim only, minimize the hinge:
+#   a generation is atomic: never tell() a partial generation
+#   low while spent < budget/2, then high, and only if the whole generation fits
+#   stop at the first official hard success without evaluating the rest of that generation
+#   one final high judge of the best low-fidelity incumbent, if it was not already judged
+
+cma:
+  dimension: 8
+  popsize: 4
+  sigma0: 0.2
+  x0: 0.5
+  bounds: [0.0, 1.0]
+
+# Adjoint at budget B is saturated when the next budget's mean best official
+# FoM, averaged over the two devices, rises by at most this much and the
+# success rate does not rise. The main table uses the largest unsaturated tier.
+# If every tier is saturated, the main tier is the smallest budget.
+saturation_fom: 0.02
+
+methods: [fixed_adjoint, random_restart, cmaes, heuristic]
+phase_a_seeds: [0]
+phase_b_seeds: [0, 1, 2]

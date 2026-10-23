@@ -1,0 +1,115 @@
+\begin{thebibliography}{15}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Chen et~al.(2021)Chen, Tworek, Jun, Yuan, et~al.]{chen2021codex}
+Mark Chen, Jerry Tworek, Heewoo Jun, Qiming Yuan, et~al.
+\newblock Evaluating large language models trained on code, 2021.
+\newblock URL \url{https://arxiv.org/abs/2107.03374}.
+
+\bibitem[{DeepSeek-AI}(2026)]{deepseek2026v4}
+{DeepSeek-AI}.
+\newblock Deepseek-{V4} preview: Entering the era of affordable million-token
+  context.
+\newblock \url{https://www.deepseek.com/en/news/v4-preview/}, April 2026.
+\newblock Queried on 20 October 2026 under the {API} model name
+  \texttt{deepseek-v4-pro}.
+
+\bibitem[Hinton et~al.(2015)Hinton, Vinyals, and Dean]{hinton2015distilling}
+Geoffrey Hinton, Oriol Vinyals, and Jeff Dean.
+\newblock Distilling the knowledge in a neural network, 2015.
+\newblock URL \url{https://arxiv.org/abs/1503.02531}.
+
+\bibitem[Jiang et~al.(2026)Jiang, Li, Zhang, and Xu]{jiang2026picopilot}
+Xiaohan Jiang, Zeyu Li, Wei Zhang, and Jiang Xu.
+\newblock {PICopilot}: An {LLM}-based agentic framework for assisting photonic
+  integrated circuit design via script generation.
+\newblock In \emph{IEEE/ACM International Conference on Computer-Aided Design
+  (ICCAD)}, 2026.
+\newblock arXiv:2608.01791.
+
+\bibitem[Lai et~al.(2024)Lai, Lee, Chen, Poddar, Hu, Pan, and
+  Luo]{lai2024analogcoder}
+Yao Lai, Sungyoung Lee, Guojin Chen, Souradip Poddar, Mengkang Hu, David~Z.
+  Pan, and Ping Luo.
+\newblock {AnalogCoder}: Analog circuit design via training-free code
+  generation, 2024.
+\newblock URL \url{https://arxiv.org/abs/2405.14918}.
+
+\bibitem[Laporte(2023)]{laporte2023sax}
+Floris Laporte.
+\newblock {SAX}: Circuit simulator for photonic integrated circuits.
+\newblock \url{https://github.com/flaport/sax}, 2023.
+\newblock Scoring in this paper uses \texttt{sax} 0.13.3 and \texttt{jax}
+  0.4.34.
+
+\bibitem[Liu et~al.(2023{\natexlab{a}})Liu, Ene, Kirby,
+  et~al.]{liu2023chipnemo}
+Mingjie Liu, Teodor-Dumitru Ene, Robert Kirby, et~al.
+\newblock {ChipNeMo}: Domain-adapted {LLMs} for chip design,
+  2023{\natexlab{a}}.
+\newblock URL \url{https://arxiv.org/abs/2311.00176}.
+
+\bibitem[Liu et~al.(2023{\natexlab{b}})Liu, Pinckney, Khailany, and
+  Ren]{liu2023verilogeval}
+Mingjie Liu, Nathaniel Pinckney, Brucek Khailany, and Haoxing Ren.
+\newblock {VerilogEval}: Evaluating large language models for {Verilog} code
+  generation.
+\newblock In \emph{IEEE/ACM International Conference on Computer-Aided Design
+  (ICCAD)}, 2023{\natexlab{b}}.
+
+\bibitem[Lu et~al.(2024)Lu, Liu, Zhang, and Xie]{lu2024rtllm}
+Yao Lu, Shang Liu, Qijun Zhang, and Zhiyao Xie.
+\newblock {RTLLM}: An open-source benchmark for design {RTL} generation with
+  large language model.
+\newblock In \emph{Asia and South Pacific Design Automation Conference
+  (ASP-DAC)}, 2024.
+
+\bibitem[Ma et~al.(2026)Ma, Wang, Ma, Zhuang, and Liu]{ma2026netlistbench}
+Jiarui Ma, Jianghan Wang, Yuheng Ma, Ziyi Zhuang, and Xiaoguang Liu.
+\newblock {NetlistBench}: Evaluating {LLM} reliability in {SPICE} netlist
+  recognition and manipulation.
+\newblock In \emph{ACM/IEEE International Symposium on Machine Learning for CAD
+  (MLCAD)}, 2026.
+\newblock arXiv:2608.12197, \url{https://github.com/WoshiMayou/NetlistBench}.
+
+\bibitem[Pirouzan(2026)]{hedayati2026levels}
+Ali~Hedayati Pirouzan.
+\newblock Validation and simulation catch different errors: Four levels of
+  evaluation for {LLM}-generated circuits, 2026.
+\newblock URL \url{https://arxiv.org/abs/2609.26830}.
+
+\bibitem[{Qwen Team}(2026)]{qwen2026}
+{Qwen Team}.
+\newblock {Qwen3.5}: Towards native multimodal agents.
+\newblock \url{https://qwen.ai/blog?id=qwen3.5}, February 2026.
+\newblock The student model is the post-trained \texttt{Qwen3.5-9B} checkpoint.
+
+\bibitem[Sharma et~al.(2025)Sharma, Fu, Ansari, Iyer, Kuang, Mistry, Aishy,
+  Ahmad, Matres, Englund, and Poon]{sharma2025phido}
+Ankita Sharma, Yuqi Fu, Vahid Ansari, Rishabh Iyer, Fiona Kuang, Kashish
+  Mistry, Raisa~Islam Aishy, Sara Ahmad, Joaquin Matres, Dirk~R. Englund, and
+  Joyce K.~S. Poon.
+\newblock {AI} agents for photonic integrated circuit design automation, 2025.
+\newblock URL \url{https://arxiv.org/abs/2508.14123}.
+\newblock PhIDO: natural language to {GDS}; structural validity, not a
+  performance-qualified spectrum.
+
+\bibitem[Wu et~al.(2025)Wu, Yu, Chen, Luo, Tong, and Ma]{wu2025picbench}
+Yuchao Wu, Xiaofei Yu, Hao Chen, Yang Luo, Yeyu Tong, and Yuzhe Ma.
+\newblock {PICBench}: Benchmarking {LLMs} for photonic integrated circuits
+  design, 2025.
+\newblock URL \url{https://arxiv.org/abs/2502.03159}.
+
+\bibitem[Zhang et~al.(2025)Zhang, Kang, Campbell, and
+  Werner]{zhang2025chattoschip}
+Huanshu Zhang, Lei Kang, Sawyer~D. Campbell, and Douglas~H. Werner.
+\newblock Chat to chip: Large language model based design of arbitrarily shaped
+  metasurfaces.
+\newblock \emph{Nanophotonics}, 2025.
+\newblock arXiv:2509.24196.
+
+\end{thebibliography}

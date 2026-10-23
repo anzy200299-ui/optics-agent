@@ -1,0 +1,64 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+logs/
+*.egg-info/
+configs/api.env
+
+# Credentials and local configuration
+.env
+.env.*
+*.pem
+*.key
+.vscode/
+
+# Local histories and working notes
+.specstory/
+conversations/
+.transfer-*
+.cursorindexingignore
+COPY_OK.txt
+Untitled
+zz_py_probe.txt
+experiment.md
+plan.md
+scripts.md
+
+# Environments, downloaded dependencies and unpublished artifacts
+.venv*/
+conda-envs/
+models/
+data/
+sft/
+third_party/
+*.safetensors
+*.ckpt
+*.pt
+*.pth
+*.bin
+*.pdf
+!paper/main.pdf
+!paper_figures/*.pdf
+
+# LaTeX build intermediates
+*.aux
+*.log
+*.out
+*.blg
+*.toc
+*.fls
+*.fdb_latexmk
+
+# Superseded drafts and review scratch files
+paper/main_recovered.tex
+paper/main_source.tex
+paper/revision_report.md
+paper/figures/
+paper_figures/.bak*/
+paper_figures/source/.bak*/
+paper_figures/*.preview.png
+paper_figures/figure_review.md
+scripts/main_final.tex
+scripts/zz_*
+

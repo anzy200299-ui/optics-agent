@@ -1,0 +1,112 @@
+# Locked on 2026-10-19 before any scored run.
+# Cost definition and thresholds do not change mid-experiment.
+# This file is the spec the paper table must match.
+
+ceviche_challenges_commit: "6352656f902dabacea88e123c89dde13dd8a3160"
+ceviche_challenges_commit_date: "2023-02-05"
+
+# The archived prefabs are air-clad (eps=1), 1550 nm, and 160–200 nm wide.
+# They are not the Schubert et al., ACS Photonics 9, 2327 (2022) devices.
+# Geometry below is the Schubert device expressed through that same API.
+# Lengths the paper does not publish (access waveguides, PML, padding) are
+# explicit here so the run is reproducible. They are not a new physics claim.
+physics_source: "Schubert2022 via ceviche_challenges API, not the prefab defaults"
+
+# One grid for both devices. 50 nm is the waveguide-bend prefab default.
+# The paper's 10 nm grid is not used: it is not the prefab default, and a
+# 10 nm beamsplitter does not fit the week. Recorded so the paper cannot
+# quietly call this a 10 nm result.
+resolution_nm: 50
+
+# ceviche_challenges/scattering.py implements Ez only, not Hz.
+# This is not the quasi-TE mode of a 220 nm SOI strip.
+polarization: "Ez"
+polarization_note: "Out-of-plane electric field. Not SOI quasi-TE."
+
+cost:
+  definition: "C = N_forward + alpha * N_adjoint"
+  alpha: 1.0
+  # One 2D FDFD solve at one wavelength counts as 1.
+  # A 1D port eigenmode does not count.
+  # Low fidelity: 1 wavelength, so one adjoint iteration costs 2.
+  # High fidelity: 3 wavelengths in each 10 nm band (6 total).
+  # The plan's illustrative "C += 6" assumed 3 wavelengths.
+  # Locked here before the sweep: one high adjoint iteration costs 12.
+  low_wavelengths_nm: [1270.0]
+  high_wavelengths_nm: [1265.0, 1270.0, 1275.0, 1285.0, 1290.0, 1295.0]
+  budgets: [20, 40, 80]
+
+parameterization:
+  # No brush/conditional-generator lives in the locked repository.
+  # Density filter + tanh projection is the stand-in, with the radius locked.
+  filter: "repeated_neighbor_average"
+  filter_radius_px: 2
+  beta: 16.0
+  eta: 0.5
+  # Minimum solid and void width. 150 nm on a 50 nm grid is 3 cells,
+  # so the medial-axis distance must be at least 1.5 px.
+  # Checked with a distance transform, not morphological equality:
+  # equality rejects every staircase on a curve, which is not a linewidth.
+  min_feature_nm: 150
+
+optimizer:
+  adam_lr: 0.05
+  adam_beta1: 0.9
+  adam_beta2: 0.999
+  adam_eps: 1.0e-8
+
+# Schubert Table I, in power dB: 10*log10(|S|^2) = 20*log10(|S|).
+# Hard success requires every judge wavelength, plus the length-scale check.
+# The beamsplitter ratio tolerance is the Table I floor on both drop ports,
+# not a second hand-tuned number.
+thresholds_db:
+  bend:
+    s11_max_db: -20.0
+    s21_min_db: -0.5
+  beam_splitter:
+    s11_max_db: -20.0
+    s21_min_db: -3.5
+    s31_min_db: -3.5
+    s41_max_db: -20.0
+
+devices:
+  waveguide_bend:
+    wg_width_nm: 400
+    wg_length_nm: 750
+    wg_mode_padding_nm: 750
+    padding_nm: 400
+    port_pml_offset_nm: 50
+    input_monitor_offset_nm: 50
+    variable_region_nm: [1600, 1600]
+    cladding_permittivity: 2.25
+    slab_permittivity: 12.25
+    pml_width: 20
+  beam_splitter:
+    wg_width_nm: 400
+    wg_length_nm: 750
+    wg_separation_nm: 800
+    wg_mode_padding_nm: 400
+    port_pml_offset_nm: 50
+    input_monitor_offset_nm: 50
+    variable_region_nm: [3200, 2000]
+    cladding_permittivity: 2.25
+    slab_permittivity: 12.25
+    design_symmetry: "xy"
+    pml_width: 20
+
+actions:
+  methods: ["adjoint", "cmaes"]
+  parameterizations: ["density_grid", "parametric_lowdim"]
+  objectives: ["minimax_transmission"]
+  iterations: [1, 5, 10]
+  fidelities: ["low", "high"]
+  reason_codes:
+    - "improve_worst_wavelength"
+    - "stagnation"
+    - "linewidth_violation"
+    - "budget_half"
+    - "spec_met"
+    - "init"
+  # cmaes on a pixel grid is rejected. It is not a baseline.
+  illegal_pairs:
+    - ["cmaes", "density_grid"]

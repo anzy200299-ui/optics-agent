@@ -1,0 +1,11 @@
+numpy==2.2.6
+scipy==1.13.1
+autograd==1.7.0
+ceviche==0.1.3
+unyt==3.0.4
+PyYAML==6.0.2
+absl-py==2.1.0
+matplotlib==3.11.2
+cma==4.5.0
+# ceviche-challenges is the editable checkout at commit 6352656f902dabacea88e123c89dde13dd8a3160
+# pyMKL imports on this machine but is disabled; solves go through scipy.sparse.linalg.spsolve
